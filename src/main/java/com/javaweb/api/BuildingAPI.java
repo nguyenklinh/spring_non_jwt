@@ -41,11 +41,7 @@ public class BuildingAPI {
 
 		
 	}
-//	public void validate(BuildingDTO BuildingDTO) throws FieldRequiredException {
-//		if (BuildingDTO.getName() == null || BuildingDTO.getName().equals("") || BuildingDTO.getNumberOfbasement()==null) {
-//			throw new FieldRequiredException("name or getNumberOfbasement is null");
-//		}
-//	}
+
 //	
 //	@RequestMapping( value="/api/building/", method= RequestMethod.POST)
 //	public void getBuilding2(@RequestParam Map<String, String> params ) {
