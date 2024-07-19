@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.javaweb.model.BuildingSearchCriteriaDTO;
 import com.javaweb.repository.BuildingRepository;
 import com.javaweb.repository.entity.BuildingEntity;
 
@@ -19,15 +20,10 @@ public class BuildingRypositoryimpl implements BuildingRepository{
 	static final String PASS = "admin123";
 
 	@Override
-	public List<BuildingEntity> FindAll(String name, Long districtId) {
+	public List<BuildingEntity> FindAll(BuildingSearchCriteriaDTO buildingSearchCriteriaDTO) {
 		// TODO Auto-generated method stub
 		StringBuilder sql = new StringBuilder("SELECT * FROM building b where 1=1 ");
-		if(name != null && !name.equals("")) {
-			sql.append(" and b.name like '%"+ name+ "%' ");
-		}
-		if(districtId != null ) {
-			sql.append(" and b.districtid = "+ districtId + " " );
-		}
+		
 		List<BuildingEntity> result =new ArrayList<BuildingEntity>();
 		try(Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
 				Statement stmt= conn.createStatement();
@@ -50,5 +46,7 @@ public class BuildingRypositoryimpl implements BuildingRepository{
 		}
 		return result;
 	}
+
+	
 	
 }
