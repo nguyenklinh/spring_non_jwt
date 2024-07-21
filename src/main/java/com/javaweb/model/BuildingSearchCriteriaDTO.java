@@ -115,5 +115,13 @@ public class BuildingSearchCriteriaDTO {
 	public void setStaffId(Long staffId) {
 		this.staffId = staffId;
 	}
+	@Override
+	public String toString() {
+		return "BuildingSearchCriteriaDTO [name=" + name + ", floorarea=" + floorarea + ", districtId=" + districtId
+				+ ", ward=" + ward + ", street=" + street + ", numberOfbasement=" + numberOfbasement + ", direction="
+				+ direction + ", level=" + level + ", areaFrom=" + areaFrom + ", areaTo=" + areaTo + ", priceFrom="
+				+ priceFrom + ", priceTo=" + priceTo + ", managername=" + managername + ", managerphonenumber="
+				+ managerphonenumber + ", typeCode=" + typeCode + ", staffId=" + staffId + "]";
+	}
     
 }

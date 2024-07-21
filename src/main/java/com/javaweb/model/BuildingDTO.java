@@ -1,11 +1,49 @@
 package com.javaweb.model;
 
+import java.util.List;
+
 public class BuildingDTO {
 	private String name;
-	private Integer numberOfbasement;
 	private String address;
+	private Integer numberOfbasement;
+	private String managername;
+	private String managerphonenumber;
+	private Integer floorarea;
+	private Integer rentprice;
+	private List<Double> rentalAreas;
 	
 	
+	
+	public String getManagername() {
+		return managername;
+	}
+	public void setManagername(String managername) {
+		this.managername = managername;
+	}
+	public String getManagerphonenumber() {
+		return managerphonenumber;
+	}
+	public void setManagerphonenumber(String managerphonenumber) {
+		this.managerphonenumber = managerphonenumber;
+	}
+	public Integer getFloorarea() {
+		return floorarea;
+	}
+	public void setFloorarea(Integer floorarea) {
+		this.floorarea = floorarea;
+	}
+	public Integer getRentprice() {
+		return rentprice;
+	}
+	public void setRentprice(Integer rentprice) {
+		this.rentprice = rentprice;
+	}
+//	public Integer getRentarea() {
+//		return rentarea;
+//	}
+//	public void setRentarea(Integer rentarea) {
+//		this.rentarea = rentarea;
+//	}
 	public String getName() {
 		return name;
 	}
@@ -23,6 +61,12 @@ public class BuildingDTO {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public List<Double> getRentalAreas() {
+		return rentalAreas;
+	}
+	public void setRentalAreas(List<Double> rentalAreas) {
+		this.rentalAreas = rentalAreas;
 	}
 	
 	

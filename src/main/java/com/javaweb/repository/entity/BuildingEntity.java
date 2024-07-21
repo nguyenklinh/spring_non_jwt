@@ -1,6 +1,9 @@
 package com.javaweb.repository.entity;
 
+import java.util.List;
+
 public class BuildingEntity {
+	private Long id;
 	private String name;
 	private Integer numberOfbasement;
 	private String ward;
@@ -12,6 +15,21 @@ public class BuildingEntity {
 	private Integer rentprice;
 	private String managername;
 	private String managerphonenumber;
+	private String district;
+	private List<Double> rentalAreas; 
+	
+	public List<Double> getRentalAreas() {
+		return rentalAreas;
+	}
+	public void setRentalAreas(List<Double> rentalAreas) {
+		this.rentalAreas = rentalAreas;
+	}
+	public String getDistrict() {
+		return district;
+	}
+	public void setDistrict(String district) {
+		this.district = district;
+	}
 	public String getName() {
 		return name;
 	}
@@ -77,6 +95,12 @@ public class BuildingEntity {
 	}
 	public void setManagerphonenumber(String managerphonenumber) {
 		this.managerphonenumber = managerphonenumber;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 		
 
