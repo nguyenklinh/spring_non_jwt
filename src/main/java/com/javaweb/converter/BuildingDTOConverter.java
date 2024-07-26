@@ -33,7 +33,7 @@ public class BuildingDTOConverter {
 		String rentalAreas = rentareas.stream()
                 .map(RentareaEntity::getValue)
                 .map(String::valueOf)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(" , "));
 		building.setRentalAreas(rentalAreas);
 //            building.setName(item.getName());
 //    		building.setNumberOfbasement(item.getNumberOfbasement());
