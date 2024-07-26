@@ -16,12 +16,12 @@ public class BuildingEntity {
 	private String managername;
 	private String managerphonenumber;
 	private String district;
-	private List<Double> rentalAreas; 
+	private String rentalAreas; 
 	
-	public List<Double> getRentalAreas() {
+	public String getRentalAreas() {
 		return rentalAreas;
 	}
-	public void setRentalAreas(List<Double> rentalAreas) {
+	public void setRentalAreas(String rentalAreas) {
 		this.rentalAreas = rentalAreas;
 	}
 	public String getDistrict() {

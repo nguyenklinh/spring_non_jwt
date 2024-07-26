@@ -10,7 +10,7 @@ public class BuildingDTO {
 	private String managerphonenumber;
 	private Integer floorarea;
 	private Integer rentprice;
-	private List<Double> rentalAreas;
+	private String rentalAreas;
 	
 	
 	
@@ -38,12 +38,7 @@ public class BuildingDTO {
 	public void setRentprice(Integer rentprice) {
 		this.rentprice = rentprice;
 	}
-//	public Integer getRentarea() {
-//		return rentarea;
-//	}
-//	public void setRentarea(Integer rentarea) {
-//		this.rentarea = rentarea;
-//	}
+
 	public String getName() {
 		return name;
 	}
@@ -62,11 +57,11 @@ public class BuildingDTO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public List<Double> getRentalAreas() {
+	public String getRentalAreas() {
 		return rentalAreas;
 	}
-	public void setRentalAreas(List<Double> rentalAreas) {
-		this.rentalAreas = rentalAreas;
+	public void setRentalAreas(String list) {
+		this.rentalAreas = list;
 	}
 	
 	

@@ -7,5 +7,6 @@ import com.javaweb.model.BuildingSearchCriteriaDTO;
 
 
 public interface BuildingService {
-	List<BuildingDTO> FinAll(BuildingSearchCriteriaDTO buildingSearchCriteriaDTO);
+
+	List<BuildingDTO> FindAll(BuildingSearchCriteriaDTO buildingSearchCriteriaDTO);
 }

@@ -37,19 +37,11 @@ public class BuildingAPI {
 	@GetMapping( value="/api/building/")
 	public List<BuildingDTO> getBuilding(@ModelAttribute BuildingSearchCriteriaDTO buildingSearchCriteriaDTO) {
 		System.out.println(buildingSearchCriteriaDTO.toString());
-			List<BuildingDTO> result = buildingService.FinAll(buildingSearchCriteriaDTO);
+			List<BuildingDTO> result = buildingService.FindAll(buildingSearchCriteriaDTO);
 		return result;	
 	}
 
-//	
-//	@RequestMapping( value="/api/building/", method= RequestMethod.POST)
-//	public void getBuilding2(@RequestParam Map<String, String> params ) {
-//		System.out.println("ok");
-//	}
-//	@PostMapping( value="/api/building/")
-//	public void getBuilding2(@RequestBody BuildingDTO  BuildingDTO) {
-//		System.out.println("ok");
-//	}
+
 	
 	@DeleteMapping(value = "/api/building/{id}/{name}" )
 	public void deleteBuilding(@PathVariable Integer id,
