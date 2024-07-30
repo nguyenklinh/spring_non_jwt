@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.javaweb.repository.DistrictRepository;
 import com.javaweb.repository.entity.BuildingEntity;
 import com.javaweb.repository.entity.DistrictEntity;
-import com.javaweb.utils.connectDtabasejdbcUtil;
+import com.javaweb.utils.DtabasejdbcUtil;
 @Repository
 public class DistrictRepositoryimpl implements DistrictRepository{
 
@@ -20,7 +20,7 @@ public class DistrictRepositoryimpl implements DistrictRepository{
 	public DistrictEntity findNameById(Long id) {
 		DistrictEntity districtEntity = new DistrictEntity();
 		String sql = "SELECT DISTINCT  d.name  FROM district d where d.id = " + id + "; " ;
-		try(Connection conn = connectDtabasejdbcUtil.getConnection();
+		try(Connection conn = DtabasejdbcUtil.getConnection();
 				Statement stmt= conn.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);) {
 			

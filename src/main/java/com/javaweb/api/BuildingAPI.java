@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.javaweb.builder.BuildingSearchBuilder;
+import com.javaweb.converter.BuildingSearchCriteriaConverter;
 import com.javaweb.model.BuildingDTO;
 import com.javaweb.model.BuildingSearchCriteriaDTO;
 import com.javaweb.model.erroResponDTO;
@@ -36,13 +38,11 @@ public class BuildingAPI {
 	private BuildingService buildingService;
 	@GetMapping( value="/api/building/")
 	public List<BuildingDTO> getBuilding(@ModelAttribute BuildingSearchCriteriaDTO buildingSearchCriteriaDTO) {
-		System.out.println(buildingSearchCriteriaDTO.toString());
-			List<BuildingDTO> result = buildingService.FindAll(buildingSearchCriteriaDTO);
+		BuildingSearchBuilder criteria = BuildingSearchCriteriaConverter.convertToentity(buildingSearchCriteriaDTO);
+			List<BuildingDTO> result = buildingService.FindAll(criteria);
 		return result;	
 	}
 
-
-	
 	@DeleteMapping(value = "/api/building/{id}/{name}" )
 	public void deleteBuilding(@PathVariable Integer id,
 			@PathVariable String name) {
