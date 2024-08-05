@@ -32,7 +32,7 @@ public class BuildingRypositoryimpl implements BuildingRepository{
 			sql.append(" INNER JOIN buildingrenttype ON b.id = buildingrenttype.buildingid ");
 			sql.append(" INNER JOIN renttype ON buildingrenttype.renttypeid = renttype.id ");
 		}
-		if(buildingSearchBuilder.getPriceFrom() != null && buildingSearchBuilder.getPriceTo() != null) {
+		if(buildingSearchBuilder.getAreaFrom() != null || buildingSearchBuilder.getAreaTo() != null) {
 			sql.append(" INNER JOIN rentarea ON b.id = rentarea.buildingid ");
 		}
 	}
@@ -41,69 +41,12 @@ public class BuildingRypositoryimpl implements BuildingRepository{
 	@Override
 	public List<BuildingEntity> FindAll(BuildingSearchBuilder buildingSearchBuilder) {
 		// TODO Auto-generated method stub
-//		, district.name AS district_name, rentarea.value AS rental_area
 		StringBuilder sql = new StringBuilder("SELECT DISTINCT  b.*  FROM building b ");
 		
 		joinTable(buildingSearchBuilder, sql);
 		
 		sql.append(" where 1=1 ");
-		
-//		 if (Utility.isNotEmpty(buildingSearchBuilder.getName())) {
-//			 sql.append(" and b.name like '%"+ buildingSearchBuilder.getName()+ "%' ");
-//	        }
-//		
-//		 if(Utility.isNotEmpty(buildingSearchBuilder.getFloorarea())) {
-//			 sql.append(" and b.floorarea = " + buildingSearchBuilder.getFloorarea() );
-//		 }
-//		 
-//		 if(Utility.isNotEmpty(buildingSearchBuilder.getDistrictId()) ) {
-//				sql.append(" and b.districtid = "+ buildingSearchBuilder.getDistrictId() + " " );
-//			}
-//		 if(Utility.isNotEmpty(buildingSearchBuilder.getWard())) {
-//			 sql.append(" and b.ward like '%"+ buildingSearchBuilder.getWard()+ "%' ");
-//		 }
-//		 if(Utility.isNotEmpty(buildingSearchBuilder.getStreet()) ) {
-//			 sql.append(" and b.street like '%"+ buildingSearchBuilder.getStreet()+ "%' ");
-//		 }
-//		 if(Utility.isNotEmpty(buildingSearchBuilder.getNumberOfbasement())) {
-//				sql.append(" and b.numberofbasement = "+ buildingSearchBuilder.getNumberOfbasement() + " " );
-//			}
-//		 if(Utility.isNotEmpty(buildingSearchBuilder.getDirection() ) ) {
-//			 sql.append(" and b.direction like '%"+ buildingSearchBuilder.getDirection()+ "%' ");
-//		 }
-//		 if(Utility.isNotEmpty(buildingSearchBuilder.getLevel()) ) {
-//			 sql.append(" and b.level like '%"+ buildingSearchBuilder.getLevel()+ "%' ");
-//		 }
-//		 if(Utility.isNotEmpty(buildingSearchBuilder.getAreaFrom() )) {
-//			 sql.append(" and rentarea.value >="+ buildingSearchBuilder.getAreaFrom() + " ");
-//		 }
-//		 if(Utility.isNotEmpty(buildingSearchBuilder.getAreaTo())) {
-//			 sql.append(" and rentarea.value <="+ buildingSearchBuilder.getAreaTo() + " ");
-//		 }
-//		 if(Utility.isNotEmpty(buildingSearchBuilder.getPriceFrom())) {
-//			 sql.append(" and b.rentprice >="+ buildingSearchBuilder.getPriceFrom()+ " ");
-//		 }
-//		 if(Utility.isNotEmpty(buildingSearchBuilder.getAreaTo())) {
-//			 sql.append(" and b.rentprice <="+ buildingSearchBuilder.getPriceTo()+ " ");
-//		 }
-//		 if(Utility.isNotEmpty(buildingSearchBuilder.getManagername())) {
-//			 sql.append(" and b.managername like '%"+ buildingSearchBuilder.getManagername()+"%' ");
-//		 }
-//		 if(Utility.isNotEmpty(buildingSearchBuilder.getManagerphonenumber())) {
-//			 sql.append(" and b.managerphonenumber like '%"+ buildingSearchBuilder.getManagerphonenumber() + "%' ");
-//		 }
-//		 if(Utility.isNotEmpty(buildingSearchBuilder.getStaffId())) {
-//			 sql.append(" and assignmentbuilding.staffid ="+ buildingSearchBuilder.getStaffId()+ " ");
-//		 }
-//		 
-//		 if (buildingSearchBuilder.getTypeCode() != null && !buildingSearchBuilder.getTypeCode().isEmpty()) {
-//			 
-//			 String typecodes = buildingSearchBuilder.getTypeCode().stream()
-//					 			.map(it-> "'" + it + "'")
-//					 			.collect(Collectors.joining(","));
-//			 
-//			 sql.append(" AND renttype.code IN (").append(typecodes).append(")");
-//		 }
+
 		 Map<String, Object> conditions = new HashMap<>();
 	        conditions.put("b.name", buildingSearchBuilder.getName());
 	        conditions.put("b.floorarea", buildingSearchBuilder.getFloorarea());
@@ -113,17 +56,17 @@ public class BuildingRypositoryimpl implements BuildingRepository{
 	        conditions.put("b.numberofbasement", buildingSearchBuilder.getNumberOfbasement());
 	        conditions.put("b.direction", buildingSearchBuilder.getDirection());
 	        conditions.put("b.level", buildingSearchBuilder.getLevel());
-	        conditions.put("rentarea.value >=", buildingSearchBuilder.getAreaFrom());
-	        conditions.put("rentarea.value <=", buildingSearchBuilder.getAreaTo());
-	        conditions.put("b.rentprice >=", buildingSearchBuilder.getPriceFrom());
-	        conditions.put("b.rentprice <=", buildingSearchBuilder.getPriceTo());
+	        conditions.put("rentarea.value >", buildingSearchBuilder.getAreaFrom());
+	        conditions.put("rentarea.value <", buildingSearchBuilder.getAreaTo());
+	        conditions.put("b.rentprice >", buildingSearchBuilder.getPriceFrom());
+	        conditions.put("b.rentprice <", buildingSearchBuilder.getPriceTo());
 	        conditions.put("b.managername", buildingSearchBuilder.getManagername());
 	        conditions.put("b.managerphonenumber", buildingSearchBuilder.getManagerphonenumber());
 	        conditions.put("assignmentbuilding.staffid", buildingSearchBuilder.getStaffId());
 
 	        conditions.forEach((column, value) -> {
 	            if (value != null) {
-	                sql.append(DtabasejdbcUtil.buildCondition(column, value, " = ", column.contains("LIKE")));
+	                sql.append(DtabasejdbcUtil.buildCondition(column, value, "="));
 	            }
 	        });
 

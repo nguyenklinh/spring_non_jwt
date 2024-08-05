@@ -15,11 +15,11 @@ public class DtabasejdbcUtil {
 		return DriverManager.getConnection(DB_URL,USER,PASS);
 	}
 	
-	public static String buildCondition(String column, Object value, String operator, boolean isLike) {
+	public static String buildCondition(String column, Object value, String operator) {
         if (value == null) {
             return "";
         }
-        if (isLike) {
+        if (value instanceof String) {
             return " AND " + column + " LIKE '%" + value + "%'";
         }
         return " AND " + column + operator + value;
