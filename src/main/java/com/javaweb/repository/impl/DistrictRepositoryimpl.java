@@ -13,30 +13,7 @@ import com.javaweb.repository.DistrictRepository;
 import com.javaweb.repository.entity.BuildingEntity;
 import com.javaweb.repository.entity.DistrictEntity;
 import com.javaweb.utils.DtabasejdbcUtil;
-@Repository
-public class DistrictRepositoryimpl implements DistrictRepository{
 
-	@Override
-	public DistrictEntity findNameById(Long id) {
-		DistrictEntity districtEntity = new DistrictEntity();
-		String sql = "SELECT DISTINCT  d.name  FROM district d where d.id = " + id + "; " ;
-		try(Connection conn = DtabasejdbcUtil.getConnection();
-				Statement stmt= conn.createStatement();
-				ResultSet rs = stmt.executeQuery(sql);) {
-			
-			while(rs.next()) {
-				districtEntity.setName(rs.getString("name"));
-					
-				}
-			}
-			
-		catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		
-		// TODO Auto-generated method stub
-		return districtEntity;
-	}
+public class DistrictRepositoryimpl {
 
 }
