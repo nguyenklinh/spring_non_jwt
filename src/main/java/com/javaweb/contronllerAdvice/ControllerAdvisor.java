@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.javaweb.model.erroResponDTO;
+import com.javaweb.model.ErroResponDTO;
 
 import customexceptions.FieldRequiredException;
 @ControllerAdvice
@@ -20,7 +20,7 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler{
     public ResponseEntity<Object> athermathticException(
             ArithmeticException ex,  WebRequest request) {
     		
-    	erroResponDTO error = new erroResponDTO();
+    	ErroResponDTO error = new ErroResponDTO();
     	error.setError(ex.getMessage());
     	List<String> details = new ArrayList<String>();
     	details.add("làm sao chia được cho số không");
@@ -32,7 +32,7 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler{
     @ExceptionHandler(FieldRequiredException.class)
     public ResponseEntity<Object> FieldRequiredException(
     	FieldRequiredException ex,  WebRequest request) {
-    	erroResponDTO error = new erroResponDTO();
+    	ErroResponDTO error = new ErroResponDTO();
 		error.setError(ex.getMessage());
 		List<String> detail = new ArrayList<>();
 		detail.add("check laij name hoac getNumberOfbasement di boi vi bi null do");

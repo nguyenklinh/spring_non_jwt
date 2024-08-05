@@ -26,7 +26,7 @@ import com.javaweb.builder.BuildingSearchBuilder;
 import com.javaweb.converter.BuildingSearchCriteriaConverter;
 import com.javaweb.model.BuildingDTO;
 import com.javaweb.model.BuildingSearchCriteriaDTO;
-import com.javaweb.model.erroResponDTO;
+import com.javaweb.model.ErroResponDTO;
 import com.javaweb.service.BuildingService;
 import com.mysql.cj.jdbc.Driver;
 

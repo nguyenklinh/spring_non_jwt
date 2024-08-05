@@ -19,7 +19,7 @@ import com.javaweb.repository.entity.DistrictEntity;
 import com.javaweb.repository.entity.RentareaEntity;
 import com.javaweb.service.BuildingService;
 @Service
-public class buildingServiceImpl implements BuildingService{
+public class BuildingServiceImpl implements BuildingService{
 	@Autowired
 	private BuildingRepository buildingRepository;
 	

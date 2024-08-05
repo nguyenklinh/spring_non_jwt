@@ -3,7 +3,7 @@ package com.javaweb.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class erroResponDTO {
+public class ErroResponDTO {
 	private String error;
 	private List<String> detail = new ArrayList<>();
 	public String getError() {
