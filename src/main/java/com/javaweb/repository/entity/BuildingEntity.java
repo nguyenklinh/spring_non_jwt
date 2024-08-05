@@ -33,9 +33,6 @@ public class BuildingEntity {
 	@Column(name= "street")
 	private String street;
 	
-//	@Column(name= "districtid")
-//	private Long districtid;
-
 	@Column(name= "floorarea")
 	private Integer floorarea;
 	
@@ -54,11 +51,6 @@ public class BuildingEntity {
 	@Column(name= "managerphonenumber")
 	private String managerphonenumber;
 	
-//	@Column(name= "district")
-//	private String district;
-	
-//	@Column(name= "rentalareas")
-//	private String rentalAreas; 
 	
 	@ManyToOne
 	@JoinColumn(name = "districtid")
@@ -79,18 +71,7 @@ public class BuildingEntity {
 	public void setItems(List<RentareaEntity> items) {
 		this.items = items;
 	}
-//	public String getRentalAreas() {
-//		return rentalAreas;
-//	}
-//	public void setRentalAreas(String rentalAreas) {
-//		this.rentalAreas = rentalAreas;
-//	}
-//	public String getDistrict() {
-//		return district;
-//	}
-//	public void setDistrict(String district) {
-//		this.district = district;
-//	}
+
 	public String getName() {
 		return name;
 	}
@@ -115,12 +96,7 @@ public class BuildingEntity {
 	public void setStreet(String street) {
 		this.street = street;
 	}
-//	public Long getDistrictid() {
-//		return districtid;
-//	}
-//	public void setDistrictid(Long districtid) {
-//		this.districtid = districtid;
-//	}
+
 	public Integer getFloorarea() {
 		return floorarea;
 	}

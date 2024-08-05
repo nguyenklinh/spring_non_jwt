@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -37,15 +38,16 @@ public class userEntity {
 	@Column(name = "status")
 	private Integer status;
 	
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-	private List<userRoleEntity> userRoleEntities = new ArrayList<>(); 
-
-	public List<userRoleEntity> getUserRoleEntities() {
-		return userRoleEntities;
+	@ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+	private List<roleEntity> roles = new ArrayList<roleEntity>(); 
+	
+	
+	public List<roleEntity> getRoles() {
+		return roles;
 	}
 
-	public void setUserRoleEntities(List<userRoleEntity> userRoleEntities) {
-		this.userRoleEntities = userRoleEntities;
+	public void setRoles(List<roleEntity> roles) {
+		this.roles = roles;
 	}
 
 	public Integer getId() {
