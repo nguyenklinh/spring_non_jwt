@@ -1,4 +1,4 @@
-package com.javaweb.repository.impl;
+package com.javaweb.repository.custom.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,12 +13,31 @@ import org.springframework.stereotype.Repository;
 
 import com.javaweb.builder.BuildingSearchBuilder;
 import com.javaweb.repository.BuildingRepository;
+import com.javaweb.repository.custom.BuildingRepositoryCustom;
 import com.javaweb.repository.entity.BuildingEntity;
 import com.javaweb.utils.DtabasejdbcUtil;
 
 @Repository
 @Primary
-public class BuildingRypositoryimpl implements BuildingRepository{
+public  class BuildingRepositoryImpl implements BuildingRepositoryCustom{
+	
+	@PersistenceContext
+	private EntityManager entityManager;
+	@Override
+	public List<BuildingEntity> findAll(BuildingSearchBuilder buildingSearchBuilder) {
+		
+		StringBuilder sql =new StringBuilder("SELECT DISTINCT  b.*  FROM building b ");
+		
+		joinTable(buildingSearchBuilder, sql);
+		
+		sql.append(" where 1=1 ");
+		
+		generateQueryConditions(buildingSearchBuilder, sql);
+		
+		Query query  = entityManager.createNativeQuery(sql.toString(), BuildingEntity.class);
+		
+		return query.getResultList();
+	}
 	
 	public static void joinTable(BuildingSearchBuilder buildingSearchBuilder,StringBuilder sql) { 
 		if(buildingSearchBuilder.getStaffId() != null) {
@@ -62,20 +81,5 @@ public class BuildingRypositoryimpl implements BuildingRepository{
 	}
 	
 	
-	
-	
-	
-	@PersistenceContext
-	private EntityManager entityManager;
-	@Override
-	public List<BuildingEntity> FindAll(BuildingSearchBuilder buildingSearchBuilder) {
-		
-		StringBuilder sql =new StringBuilder("SELECT DISTINCT  b.*  FROM building b ");
-		joinTable(buildingSearchBuilder, sql);
-		sql.append(" where 1=1 ");
-		generateQueryConditions(buildingSearchBuilder, sql);
-		 Query query  = entityManager.createNativeQuery(sql.toString(), BuildingEntity.class);
-		return query.getResultList();
-	}
 
 }

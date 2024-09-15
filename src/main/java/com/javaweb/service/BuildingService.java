@@ -9,5 +9,5 @@ import com.javaweb.model.BuildingSearchCriteriaDTO;
 
 public interface BuildingService {
 
-	List<BuildingDTO> FindAll(BuildingSearchBuilder buildingSearchBuilder);
+	List<BuildingDTO> findAll(BuildingSearchBuilder buildingSearchBuilder);
 }

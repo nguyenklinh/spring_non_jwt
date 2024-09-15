@@ -27,9 +27,9 @@ public class buildingServiceImpl implements BuildingService{
 	private BuildingDTOConverter buildingDTOConverter;
 	
 	@Override
-	public List<BuildingDTO> FindAll(BuildingSearchBuilder buildingSearchBuilder) {
+	public List<BuildingDTO> findAll(BuildingSearchBuilder buildingSearchBuilder) {
 		// TODO Auto-generated method stub
-		List<BuildingEntity> buildinigEntities = buildingRepository.FindAll(buildingSearchBuilder);
+		List<BuildingEntity>  buildinigEntities= buildingRepository.findAll(buildingSearchBuilder);
 		List<BuildingDTO> result = new ArrayList<BuildingDTO>();
 		for(BuildingEntity item : buildinigEntities) {
 			BuildingDTO building= buildingDTOConverter.toBuildingDTO(item);
